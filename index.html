@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EventPulse 3D - Modern interactive event discovery and management platform with 3D WebGL experiences, live countdowns, and instant ticket pass generation." />
+  <title>EventPulse 3D • Next-Gen Event Management Platform</title>
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ==========================================
+       1. Top Sticky Navigation Bar
+       ========================================== -->
+  <header class="site-header">
+    <div class="container navbar">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="EventPulse 3D Home">
+        <div class="logo-sphere">
+          <i class="fas fa-atom"></i>
+        </div>
+        <div class="logo-text">Event<span>Pulse</span> 3D</div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#featured" class="nav-link">Spotlight</a></li>
+          <li><a href="#events" class="nav-link">Explore Events</a></li>
+          <li><a href="#features" class="nav-link">Platform</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="nav-right-actions">
+        <!-- My Tickets Trigger -->
+        <button class="my-tickets-nav-btn" id="my-tickets-btn" title="View Registered Passes">
+          <i class="fas fa-ticket-alt"></i>
+          <span>My Passes</span>
+          <span class="ticket-count-badge" id="my-tickets-count-badge">0</span>
+        </button>
+
+        <!-- Dark/Light Theme Toggle -->
+        <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle theme">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-btn" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       2. Hero Section with Interactive 3D Canvas
+       ========================================== -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="hero-tag">
+            <i class="fas fa-sparkles"></i> The Next Dimension in Event Discovery
+          </div>
+          <h1 class="hero-headline">
+            Experience Live Events in <span>3D Space</span>.
+          </h1>
+          <p class="hero-lead">
+            Discover premier tech conventions, electronic music festivals, esports tournaments, and interactive workshops. Register with ease and unlock your personalized 3D VIP digital pass.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#events" class="btn btn-primary">
+              <i class="fas fa-compass"></i> Explore Events
+            </a>
+            <a href="#featured" class="btn btn-secondary">
+              <i class="fas fa-bolt"></i> Spotlight Lineup
+            </a>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="stat-item">
+              <h4>50+</h4>
+              <p>Curated Events</p>
+            </div>
+            <div class="stat-item">
+              <h4>12K+</h4>
+              <p>Registered Attendees</p>
+            </div>
+            <div class="stat-item">
+              <h4>99.8%</h4>
+              <p>Verified Rating</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 3D Interactive Canvas Scene -->
+        <div class="hero-canvas-container">
+          <canvas id="hero-3d-canvas" aria-label="Interactive 3D Sphere Scene"></canvas>
+          <div class="canvas-floating-badge">
+            <i class="fas fa-cube"></i> Interactive 3D • Move cursor to orbit
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. Featured Spotlight Events & Countdown
+         ========================================== -->
+    <section class="featured-section" id="featured">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">High In Demand</span>
+          <h2 class="section-title">Spotlight Events</h2>
+          <p class="section-subtitle">
+            Hurry! Seats are filling fast. Real-time countdown timers tracking live availability.
+          </p>
+        </div>
+
+        <!-- Dynamic Featured Cards Grid -->
+        <div class="featured-grid" id="featured-events-grid">
+          <!-- Injected dynamically via JS with live countdown -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. Search & Filter Suite + Event Grid
+         ========================================== -->
+    <section class="explore-section" id="events">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Browse & Filter</span>
+          <h2 class="section-title">Discover All Upcoming Events</h2>
+          <p class="section-subtitle">
+            Search by keyword or filter across categories to find the experiences that inspire you.
+          </p>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="search-filter-card glass-panel">
+          <div class="search-top-row">
+            <div class="search-input-box">
+              <i class="fas fa-search search-icon"></i>
+              <input 
+                type="text" 
+                id="event-search-input" 
+                placeholder="Search events by title, venue, or keyword..." 
+                autocomplete="off"
+              />
+              <button class="clear-search-btn" id="search-clear-btn" title="Clear Search">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <div class="sort-select-box">
+              <select id="event-sort-select" aria-label="Sort events">
+                <option value="date">Sort: Soonest First</option>
+                <option value="popularity">Sort: High Demand / Fewest Seats</option>
+                <option value="name">Sort: Alphabetical (A-Z)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Category Pills -->
+          <div class="category-pills-row">
+            <button class="filter-pill active" data-category="all">
+              <i class="fas fa-layer-group"></i> All Events
+            </button>
+            <button class="filter-pill" data-category="technology">
+              <i class="fas fa-microchip"></i> Technology
+            </button>
+            <button class="filter-pill" data-category="music">
+              <i class="fas fa-music"></i> Music & Arts
+            </button>
+            <button class="filter-pill" data-category="workshops">
+              <i class="fas fa-tools"></i> Workshops
+            </button>
+            <button class="filter-pill" data-category="gaming">
+              <i class="fas fa-gamepad"></i> Gaming & Esports
+            </button>
+            <button class="filter-pill" data-category="design">
+              <i class="fas fa-paint-brush"></i> Design & UX
+            </button>
+            <button class="filter-pill" data-category="business">
+              <i class="fas fa-briefcase"></i> Business
+            </button>
+          </div>
+
+          <!-- Results Summary -->
+          <div class="filter-results-info">
+            <span id="filtered-count">Showing 6 Events</span>
+            <span><i class="fas fa-info-circle"></i> Hover over cards to interact with 3D tilt</span>
+          </div>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="events-grid" id="events-grid">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. Platform Features / Why EventPulse
+         ========================================== -->
+    <section class="featured-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Engineered for Excellence</span>
+          <h2 class="section-title">Why EventPulse 3D?</h2>
+          <p class="section-subtitle">
+            Built using modern web technologies to deliver an unforgettable user experience.
+          </p>
+        </div>
+
+        <div class="featured-grid">
+          <div class="glass-panel" style="padding: 32px;">
+            <div style="font-size: 2.2rem; color: var(--accent-cyan); margin-bottom: 16px;">
+              <i class="fas fa-cube"></i>
+            </div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Interactive 3D WebGL</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Powered by Three.js rendering dynamic geometric meshes, particles, and interactive perspective tilts for next-level visual engagement.
+            </p>
+          </div>
+
+          <div class="glass-panel" style="padding: 32px;">
+            <div style="font-size: 2.2rem; color: var(--accent-purple); margin-bottom: 16px;">
+              <i class="fas fa-id-card"></i>
+            </div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 10px;">3D Digital VIP Passes</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Upon registration, receive an interactive, realistic 3D holographic digital ticket with QR verification and print/download capabilities.
+            </p>
+          </div>
+
+          <div class="glass-panel" style="padding: 32px;">
+            <div style="font-size: 2.2rem; color: var(--accent-emerald); margin-bottom: 16px;">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Client-Side Storage</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Zero server latency. LocalStorage handles instant pass storage, registration management, cancellations, and theme preference persistence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       6. Modals
+       ========================================== -->
+
+  <!-- Modal A: Event Details Modal -->
+  <div class="modal-overlay" id="event-details-modal" role="dialog" aria-modal="true" aria-labelledby="details-title">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal('event-details-modal')" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="event-details-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal B: Event Registration Modal -->
+  <div class="modal-overlay" id="registration-modal" role="dialog" aria-modal="true" aria-labelledby="reg-modal-heading">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal('registration-modal')" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="form-modal-header">
+        <h2 id="reg-modal-heading">Event Registration</h2>
+        <p>Fill out the details below to secure your spot and generate your 3D digital pass.</p>
+      </div>
+
+      <form id="event-registration-form" class="registration-form" novalidate>
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="reg-name">Full Name <span class="req">*</span></label>
+          <input 
+            type="text" 
+            id="reg-name" 
+            class="form-control" 
+            placeholder="e.g. Alex Morgan" 
+            required 
+          />
+          <div class="error-message" id="reg-name-error"></div>
+        </div>
+
+        <!-- Email & Phone Grid -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="reg-email">Email Address <span class="req">*</span></label>
+            <input 
+              type="email" 
+              id="reg-email" 
+              class="form-control" 
+              placeholder="e.g. alex@example.com" 
+              required 
+            />
+            <div class="error-message" id="reg-email-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-phone">Phone Number <span class="req">*</span></label>
+            <input 
+              type="tel" 
+              id="reg-phone" 
+              class="form-control" 
+              placeholder="e.g. 9876543210" 
+              required 
+            />
+            <div class="error-message" id="reg-phone-error"></div>
+          </div>
+        </div>
+
+        <!-- Selected Event Dropdown -->
+        <div class="form-group">
+          <label for="reg-event-select">Select Event <span class="req">*</span></label>
+          <select id="reg-event-select" class="form-control" required>
+            <!-- Injected dynamically -->
+          </select>
+          <div class="error-message" id="reg-event-select-error"></div>
+        </div>
+
+        <!-- Ticket Tier & Quantity -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="reg-ticket-type">Ticket Tier <span class="req">*</span></label>
+            <select id="reg-ticket-type" class="form-control" required>
+              <option value="General Admission">General Admission</option>
+              <option value="VIP All-Access">VIP All-Access</option>
+              <option value="Student Pass">Student Pass</option>
+            </select>
+            <div class="error-message" id="reg-ticket-type-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-quantity">Ticket Quantity</label>
+            <select id="reg-quantity" class="form-control">
+              <option value="1">1 Ticket</option>
+              <option value="2">2 Tickets</option>
+              <option value="3">3 Tickets</option>
+              <option value="4">4 Tickets</option>
+              <option value="5">5 Tickets</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('registration-modal')">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary" id="reg-submit-btn">
+            <i class="fas fa-check-circle"></i> Confirm Registration
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal C: Interactive 3D Digital Ticket Modal -->
+  <div class="modal-overlay" id="ticket-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog" style="max-width: 680px;">
+      <button class="modal-close-btn" onclick="closeModal('ticket-modal')" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="ticket-modal-content">
+        <!-- Rendered dynamically upon submission -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal D: My Registered Tickets Drawer / Modal -->
+  <div class="modal-overlay" id="my-tickets-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal('my-tickets-modal')" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="form-modal-header">
+        <h2>My Registered Passes</h2>
+        <p>Manage your booked event tickets stored securely in your browser.</p>
+      </div>
+      <div id="my-tickets-list">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- ==========================================
+       7. Footer
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="logo-sphere" style="width: 32px; height: 32px; font-size: 0.9rem;">
+              <i class="fas fa-atom"></i>
+            </div>
+            <div class="logo-text">Event<span>Pulse</span> 3D</div>
+          </div>
+          <p>
+            A high-performance, responsive event discovery and registration platform with interactive 3D WebGL experiences and real-time validation.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#featured">Featured Spotlight</a></li>
+            <li><a href="#events">Upcoming Events</a></li>
+            <li><a href="#features">Platform Features</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#events">Technology & AI</a></li>
+            <li><a href="#events">Music & Arts Festivals</a></li>
+            <li><a href="#events">Esports & Gaming</a></li>
+            <li><a href="#events">Hands-on Workshops</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Academic Assignment</h4>
+          <p>
+            <strong>Subject:</strong> K-Explore – Web Designing<br />
+            <strong>Project:</strong> Responsive Event Management Website with 3D Experience<br />
+            <strong>Tech Stack:</strong> HTML5, CSS3, JavaScript (ES6+), Three.js WebGL, LocalStorage
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EventPulse 3D. Crafted for K-Explore Web Designing Assignment.</p>
+        <p><i class="fas fa-check-circle text-cyan"></i> Fully Responsive • 3D Accelerated • Offline-ready with LocalStorage</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       8. Third-Party CDNs & Application Scripts
+       ========================================== -->
+  <!-- Three.js (WebGL 3D Engine) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Canvas Confetti for Registration Celebrations -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Project Modules -->
+  <script src="js/events-data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/three-scene.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
