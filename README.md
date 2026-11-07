@@ -171,7 +171,7 @@ git add .
 git commit -m "feat: complete responsive 3D event management website with validation and localstorage"
 
 # 4. Link your remote GitHub repository
-git remote add origin https://github.com/<your-username>/k-explore-event-management.git
+git remote add origin https://github.com/mishrasanskar7/Eventpulse-3d.git
 
 # 5. Push to GitHub
 git branch -M main
