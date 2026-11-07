@@ -83,7 +83,7 @@ The website integrates **Three.js** via WebGL to create an interactive 3D visual
 ## 📂 File & Directory Architecture
 
 ```
-k-explore/
+Eventpulse-3d/
 │
 ├── index.html               # Main HTML5 application structure & semantics
 ├── README.md                # Project documentation, setup & deployment guide
@@ -141,17 +141,16 @@ Then visit `http://localhost:8000` in your web browser.
    - Folder: `/ (root)`.
 5. Click **Save**.
 6. Within 1-2 minutes, your website will be live at:
-   `https://<your-username>.github.io/<repository-name>/`
-
+   `https://github.com/mishrasanskar7/Eventpulse-3d`
 ### 2. Deploying on Vercel
 1. Go to [vercel.com](https://vercel.com) and log in with your GitHub account.
 2. Click **Add New Project** → Import your GitHub repository.
 3. Keep default settings (Framework Preset: Other, Root Directory: `./`).
-4. Click **Deploy**. Vercel will instantly generate a live URL like `https://eventpulse-3d.vercel.app`.
+4. Click **Deploy**. Vercel will instantly generate a live URL like `https://Eventpulse-3d.vercel.app`.
 
 ### 3. Deploying on Netlify
 1. Go to [netlify.com](https://netlify.com) and log in.
-2. Drag and drop the `k-explore` folder onto the Netlify dashboard, OR connect via GitHub.
+2. Drag and drop the `Eventpulse-3d` folder onto the Netlify dashboard, OR connect via GitHub.
 3. Click **Deploy Site** to get your public production URL.
 
 ---
