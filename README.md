@@ -201,3 +201,4 @@ git push -u origin main
 - [x] **Bonus Challenges**: Dark/Light mode toggle, dynamic countdown timers, LocalStorage registration management (create, view, cancel).
 - [x] **Code Quality**: Clean modular architecture, semantic HTML5, well-commented ES6+ JavaScript.
 - [x] **Documentation**: Complete `README.md` and `DOCUMENTATION.md` for project presentation and viva evaluation.
+

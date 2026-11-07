@@ -63,3 +63,4 @@ const StorageManager = {
     localStorage.setItem(STORAGE_KEYS.THEME, theme);
   }
 };
+

@@ -3,7 +3,8 @@
 **Course:** K-Explore – Web Designing  
 **Assignment:** Design and Develop a Responsive Event Management Website  
 **Project Title:** EventPulse 3D – Interactive WebGL Event Discovery & Registration Platform  
-**Author / Student:** [Your Name / Roll Number]  
+**Author / Student:** [SANSKAR MISHRA / 2430272] 
+**Section:** ECS - 3
 **Technology Stack:** HTML5, CSS3, JavaScript (ES6+), Three.js WebGL, LocalStorage API  
 
 ---
@@ -140,3 +141,4 @@ Here are key questions your evaluator/teacher may ask during your project demons
   4. Viewing the generated 3D VIP pass and confetti celebration.
   5. Inspecting "My Passes" and canceling a ticket.
 - **Slide 6: Conclusion & Future Scope**: Adding payment gateway integration (Stripe), calendar syncing (.ics), and backend sync.
+
